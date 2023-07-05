@@ -12,7 +12,7 @@ function PromptSuggestion() {
             };
 
             return (
-              <div key={index} className="prom-card">
+              <div id={`prompt-${index}`} key={index} className={`prom-card`}>
                 <header className="prompt-header front-card">
                   <p>{item.name}</p>
                 </header>
@@ -23,7 +23,7 @@ function PromptSuggestion() {
                       href={item.url}
                       rel="noopener noreferrer"
                     >
-                      Visitar
+                      <span>Visitar</span>
                     </a>
                   </span>
                 </div>

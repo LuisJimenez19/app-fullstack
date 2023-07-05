@@ -15,7 +15,7 @@ import { ModalCard } from "./components/ModalCard";
 import { TasksContextProvider } from "./context/TasksContext";
 import { TasksPage } from "./pages/TaskPage";
 import { DashboardPage } from "./pages/DashboardPage";
-import {ProfilePage} from "./pages/ProfilePage";
+import { ProfilePage } from "./pages/ProfilePage";
 
 const router = createBrowserRouter([
   {
@@ -71,7 +71,9 @@ function App() {
           <RouterProvider router={router} />
         </TasksContextProvider>
       </AuthContext>
+
       <Toaster />
+      
     </main>
   );
 }

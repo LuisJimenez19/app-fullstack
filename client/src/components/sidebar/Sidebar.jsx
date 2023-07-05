@@ -15,6 +15,7 @@ import { getHash } from "../../helpers/getHash";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { APP_NAME } from "../../Constants/appData";
+import { AudioPlayer } from "../AudioPlayer";
 
 function Sidebar() {
   const [open, setOpen] = useState(() => {
@@ -38,11 +39,9 @@ function Sidebar() {
 
   return (
     <div className={`container-sidebar ${open ? "open" : ""}`}>
-      {/* Hello world */}
       <nav className={`sidebar ${!open ? "close" : ""}`}>
         <span
           onClick={() => {
-            console.log("open")
             localStorage.setItem("openSidebar", JSON.stringify(!open));
             setOpen(!open);
           }}
@@ -89,16 +88,17 @@ function Sidebar() {
             })}
           </ul>
 
-          <div className="bottom-content">
+          <ul className="bottom-content">
+            <AudioPlayer />
             <li className={`nav-link`}>
               <a
                 onClick={async () => {
                   const res = await logoutRequest();
-                  if (res.status === 200) {
+                  if (res.status === 204) {
                     auth.setUser({});
                     auth.setIsAuthenticated(false);
                     toast.success("Vuelva pronto mi amor", {
-                      icon: "<3",
+                      icon: "♥",
                     });
                   }
                 }}
@@ -112,9 +112,10 @@ function Sidebar() {
               setIsDarkMode={setIsDarkMode}
               isDarkMode={isDarkMode}
             />
-          </div>
+          </ul>
         </div>
       </nav>
+      
     </div>
   );
 }

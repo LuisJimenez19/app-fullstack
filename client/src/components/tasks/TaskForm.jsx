@@ -44,23 +44,31 @@ function TaskForm({ isAddTask, setIsAddTask }) {
       onSubmit={handleSubmit}
       className={`form-tasks ${isAddTask ? "form--active" : ""}`}
     >
-      <input
-        className="input input-task"
-        onChange={handleChange}
-        onFocus={() => setIsAddTask(true)}
-        type="text"
-        id="name"
-        placeholder="name"
-        autoComplete="off"
-      />
-      <textarea
-        className="input input-task"
-        onChange={handleChange}
-        type="text"
-        id="description"
-        placeholder="description"
-        rows={5}
-      />
+      <div>
+        {isAddTask && <label htmlFor="name">Nombre de la tarea</label>}
+        <input
+          className="input input-task"
+          onChange={handleChange}
+          onFocus={() => setIsAddTask(true)}
+          type="text"
+          id="name"
+          placeholder="Lavarme la carita"
+          autoComplete="off"
+        />
+      </div>
+      <div>
+        {isAddTask && (
+          <label htmlFor="description">Descripción de la tarea</label>
+        )}
+        <textarea
+          className="input input-task"
+          onChange={handleChange}
+          type="text"
+          id="description"
+          placeholder="con agua y con jabón"
+          rows={5}
+        />
+      </div>
 
       <button
         role="button"

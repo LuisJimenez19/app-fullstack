@@ -25,24 +25,22 @@ function SwitchToggle({ open, isDarkMode, setIsDarkMode }) {
   }
 
   return (
-    <>
-      <li onClick={handleClick} className="mode">
-        <div className="sun-moon">
-          <span className="icon moon">
-            <BsMoonFill />
-          </span>
-          <span className="icon sun">
-            <BsFillSunFill />
-          </span>
-        </div>
-        <span className="mode-text text">
-          {isDarkMode ? "Ligth" : "Dark"} mode
+    <li onClick={handleClick} className="mode">
+      <div className="sun-moon">
+        <span className="icon moon">
+          <BsMoonFill />
         </span>
-        <div className="toggle-switch">
-          <span className="switch" />
-        </div>
-      </li>
-    </>
+        <span className="icon sun">
+          <BsFillSunFill />
+        </span>
+      </div>
+      <span className="mode-text text">
+        {isDarkMode ? "Ligth" : "Dark"} mode
+      </span>
+      <div className="toggle-switch">
+        <span className="switch" />
+      </div>
+    </li>
   );
 }
 

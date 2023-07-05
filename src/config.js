@@ -1,7 +1,7 @@
 /* Se importan las variables de entorno */
 export const TOKEN_SECRET = process.env.TOKEN_SECRET || "gambare";
-export const USER_DB = process.env.USER_DB || "root";
-export const PORT_DB = process.env.PORT_DB || 3306;
-export const HOST_DB = process.env.HOST_DB || "localhost";
-export const PASSWORD_DB = process.env.PASSWORD_DB || "";
-export const NAME_DB = process.env.NAME_DB || "taskdb";
+export const DB_USER = process.env.DB_USER || "root";
+export const DB_PORT = process.env.DB_PORT || 3306;
+export const DB_HOST = process.env.HOST_DB || "localhost";
+export const DB_PASSWORD = process.env.DB_PASSWORD || "";
+export const DB_NAME = process.env.DB_NAME || "taskifyDB";

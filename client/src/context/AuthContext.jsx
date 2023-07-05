@@ -24,7 +24,7 @@ function AuthContext({ children }) {
         setIsAuthenticated(false);
         setIsLoading(false);
         console.log(e.response.data.message, e.response.status);
-        !e.response && setErrorServer(e); // si no hay conexión al servidor
+         setErrorServer(e); // si no hay conexión al servidor
         e.response.status === 401 && setErrorServer(false); // si no esta autorizado, va al login
       });
   }, []);

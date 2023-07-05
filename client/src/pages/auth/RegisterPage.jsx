@@ -22,7 +22,7 @@ function RegisterPage() {
         const res = await registerRequest(user);
 
         if (res.status === 200 || res.status === 204) {
-          console.log(res.data.currentUser);
+          
           auth.setUser(res.data.currentUser);
           toast.success(res.data.message, {
             duration: 1000,

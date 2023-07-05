@@ -1,9 +1,9 @@
 import { pool } from "../db.js";
 import bycriptjs from "bcryptjs";
 import { EMAILREGEX } from "../utils/regex.js";
-import jwt from "jsonwebtoken";
+
 import { createAccessToken, validateToken } from "../libs/jwt.js";
-import { TOKEN_SECRET } from "../config.js";
+
 
 export const pongController = async (req, res) => {
   const { user } = req;
@@ -50,7 +50,7 @@ export const registerController = async (req, res) => {
 
           const token = await createAccessToken({ id: result.insertId });
           res.cookie("token", token);
-          console.log(result);
+
           return res.status(200).json({
             message: "Successfully registered user.",
             currentUser: {
@@ -85,9 +85,7 @@ export const loginController = async (req, res) => {
   }
   /* Verifica si la credenciales coinciden. */
   try {
-    /*  const [result] = await pool.query("SELECT * FROM users WHERE email = ?", [
-      email,
-    ]); */
+   
     const [result] = await pool.query(
       "SELECT u.id, u.name, u.email, password,created_at, du.default_url " +
         "FROM users u " +
@@ -163,21 +161,10 @@ export const loginController = async (req, res) => {
 
 /**Logout*/
 export const logoutController = async (req, res) => {
-  /* if (req.session.user) {
-    req.session.destroy();
-    return res.status(200).json({
-      message: "logout.",
-    });
-  } else {
-    res.status(400).json({
-      message: "access denied.",
-    });
-  } */
-
   res.cookie("token", "", {
     httpOnly: true,
     secure: true,
     expires: new Date(0),
   });
-  return res.sendStatus(200);
+  return res.sendStatus(204);
 };

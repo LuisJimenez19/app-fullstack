@@ -48,7 +48,7 @@ le doy estilos a las targets agrego el perspective, y una forma de ver el formul
 
 y con el usuario.
 
-Agregar una tabla defaultGravatar que va a ser un catalogo con los strings que tiene por defecto gravatar, entonces así el usuario tiene la opción de poder
+Agrego una tabla defaultGravatar que va a ser un catalogo con los strings que tiene por defecto gravatar, entonces así el usuario tiene la opción de poder
 elegir que avatar tener, también informar al usuario que si quiere una imagen personalizada puede crear una cuenta en gravatar y añadir una foto de perfil.
 
 

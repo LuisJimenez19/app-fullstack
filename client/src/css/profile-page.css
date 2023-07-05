@@ -94,8 +94,13 @@
   text-align: center;
 }
 .dashboard-title {
-  filter: drop-shadow(0 3px 3px var(--primary-color));
+  text-shadow: 3px 2px 0px #242526;
 }
+
+html.dark .dashboard-title {
+  text-shadow: 3px 2px 0px #6c6c6d;
+}
+
 .profile-avatar {
   display: block;
   width: 150px;
@@ -207,14 +212,15 @@
   border-radius: 5px;
   background-position: top;
   background-repeat: no-repeat;
-  background-size: 80%;
+  background-size: cover;
   transition: var(--tran-03);
   transform: translateY(0px);
   z-index: 2;
 }
 
 .prom-card:hover ~ .prom-card {
-  opacity: 0;
+  opacity: 0.5;
+  filter: blur(3px);
 }
 
 .prom-card:hover .overlay {
@@ -284,6 +290,14 @@
 .overlay a:hover {
   filter: brightness(2);
   background-color: var(--blue);
+}
+.overlay a span {
+  transition: var(--tran-03);
+}
+.overlay a:hover span {
+  transition: var(--tran-03);
+  display: inline-block;
+  transform: scale(1.1);
 }
 
 /* <---------------footer--------------> */

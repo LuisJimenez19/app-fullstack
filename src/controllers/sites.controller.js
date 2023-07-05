@@ -67,7 +67,7 @@ export const createSite = async (req, res) => {
       alias,
       url,
     };
-    console.log(response);
+    
 
     return res.status(200).json({
       message: "successfully added",

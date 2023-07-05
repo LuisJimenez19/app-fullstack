@@ -29,6 +29,7 @@ function TasksPage() {
   return (
     <LayoutDefault>
       <section className="container-tasks-page">
+        <h1 className="dashboard-title">Tareas</h1>
         <header className="taskpage-task-header">
           <button
             onClick={() => {

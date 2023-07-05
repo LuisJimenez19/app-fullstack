@@ -9,25 +9,15 @@ import { toast } from "react-hot-toast";
 import { getCookie, setCookie } from "../helpers/cookies";
 
 import "../css/quote-anime.css";
+import { quoteDefault } from "../Constants/appData";
 function QuoteAnime() {
   const [quoteAnime, setQuoteAnime] = useState(() => {
     const quote = localStorage.getItem("quote");
     if (quote) return JSON.parse(quote);
     return null;
   });
-  const quoteDefault = {
-    translated: `No es pecado pelear por la justicia, al contrario, eso es una buena 
-    obra. Recuerda que existen oponentes que jamás entenderán con las 
-    palabras... Gohan, protege a los seres vivos y a las plantas de este mundo que tanto amé...`,
-    default: `It is not a sin to fight for justice. On the contrary, that is a
-    good deed. Remember that there are opponents who will never
-    understand with words. Gohan, protect living beings and plants in
-    this world that I loved so much. I request you....`,
-  };
 
   const [isLoading, setIsLoading] = useState(true);
-  const [errorRequest, setErrorRequest] = useState(null);
-  const [quoteOriginal, setQuoteOriginal] = useState("");
 
   const [loadingTranslate, setLoadingTranslate] = useState(false);
 
@@ -42,6 +32,15 @@ function QuoteAnime() {
     if (localStorage.getItem("showQuoteTranslated")) {
       const { isShow } = JSON.parse(
         localStorage.getItem("showQuoteTranslated")
+      );
+
+      return isShow;
+    } else return false;
+  });
+  const [showtranslatedDefault, setShowtranslatedDefault] = useState(() => {
+    if (localStorage.getItem("showtranslatedDefault")) {
+      const { isShow } = JSON.parse(
+        localStorage.getItem("showtranslatedDefault")
       );
 
       return isShow;
@@ -66,7 +65,6 @@ function QuoteAnime() {
           setCookie("lastRequestTime", nextRequestTime.toString());
         } catch (error) {
           if (error.code === "ERR_NETWORK") {
-            setErrorRequest(true);
             setIsLoading(false);
           }
           console.log(error);
@@ -80,23 +78,20 @@ function QuoteAnime() {
   }, []);
 
   /*
-   *@param event para traversing y obtener el texto a traducir
+   * Traduce el texto
+   * @param event para traversing y obtener el texto a traducir
    *
    * */
+
   async function handleTranslate(e) {
     const text = e.target.parentElement.parentElement.lastChild.innerText;
-    setQuoteOriginal(text);
-    // si falla al traer la quote que muestre lo traducido por defect
-    if (!quoteAnime) {
-      showtranslated(true);
-    }
 
-    //Para no hacer la petición si ya existe
+    //Trae el texto traducido
     if (!showtranslated && quoteTranslated == "") {
       setLoadingTranslate(true);
       const newData = await translate(text, "es");
-
-      if (newData == undefined) {
+      // falla al traducir
+      if (newData == undefined || newData == false) {
         toast.error("Ha ocurrido un error.", {
           position: "top-right",
           duration: 3000,
@@ -104,29 +99,36 @@ function QuoteAnime() {
       } else if (newData != undefined) {
         setQuoteTranslated(newData);
         setShowtranslated(true);
+
         localStorage.setItem("quoteTranslated", newData);
         localStorage.setItem(
           "showQuoteTranslated",
           JSON.stringify({ isShow: true })
         );
       }
-      setLoadingTranslate(false);
-      // si no lo esta mostrando, pero existe, entonces solo lo muestra
-    } else if (!showtranslated && quoteTranslated) {
-      setShowtranslated(true);
-      localStorage.setItem(
+      return setLoadingTranslate(false);
+    }
+
+    /* Si solo quiere alternar entre el contenido */
+    localStorage.setItem(
+      "showQuoteTranslated",
+      JSON.stringify({ isShow: !showtranslated })
+    );
+    return setShowtranslated(!showtranslated);
+  }
+
+  /* Muestra el texto por */
+  function handleTranslateDefault() {
+    // si falla al traer la quote que muestre lo traducido por defect
+    if (!quoteAnime) {
+      setShowtranslatedDefault(!showtranslatedDefault);
+      return localStorage.setItem(
         "showQuoteTranslated",
-        JSON.stringify({ isShow: true })
-      );
-      //Si ya lo esta mostrando entonces lo oculta
-    } else if (showtranslated) {
-      setShowtranslated(false);
-      localStorage.setItem(
-        "showQuoteTranslated",
-        JSON.stringify({ isShow: false })
+        JSON.stringify({ isShow: !showtranslatedDefault })
       );
     }
   }
+
   if (isLoading) {
     return (
       <div className="anime-chan">
@@ -171,15 +173,27 @@ function QuoteAnime() {
         // <p>...</p>
         <div className="quote-container">
           <h2 className="quote-anime">
-            Dragon ball Z
+          <a
+              className="link-anime"
+              target="_blank"
+              rel="noreferrer"
+              href={`https://www3.animeflv.net/browse?q=${encodeURIComponent(
+                "Dragon ball z"
+              )}`}
+            >
+              Dragon ball z
+            </a>
+          
             <BsTranslate
-              onClick={handleTranslate}
-              className="quote-translate"
+              onClick={handleTranslateDefault}
+              className={`quote-translate ${
+                showtranslatedDefault ? "quote-trasnlated--active" : ""
+              }`}
             />
           </h2>
           <h4 className="quote-character">Android 16</h4>
 
-          {quoteTranslated == "" || !showtranslated ? (
+          {!showtranslatedDefault ? (
             <p className="quote-quote">{quoteDefault.default}</p>
           ) : (
             <p className="quote-quote">{quoteDefault.translated}</p>

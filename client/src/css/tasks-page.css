@@ -53,24 +53,27 @@
   padding: 15px 20px;
   max-width: 600px;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   flex-direction: column;
   gap: 20px;
   background-color: var(--primary-color-light);
   color: var(--text-color);
   border-radius: 12px;
   opacity: 0.2;
-
   height: 20px;
   transition: var(--tran-03);
   overflow: hidden;
 }
 
 .form-tasks.form--active {
-  height: 315px;
+  height: 350px;
   padding: 15px 20px;
   opacity: 1;
   transition: var(--tran-05);
+}
+.form-tasks label{
+  font-family: var(--title2);
+  letter-spacing: .3px;
 }
 
 .input-task {

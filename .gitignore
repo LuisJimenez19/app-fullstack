@@ -1,0 +1,33 @@
+# Ignorar carpetas
+node_modules/
+client/node_modules/
+
+# Ignorar archivos
+.env
+client/explanation.md
+
+# Ignorar archivos de compilación
+/dist
+/build
+/out
+
+# Ignorar archivos de dependencias de desarrollo
+/.pnp*
+.pnp.js
+
+# Ignorar archivos de registro
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ignorar archivos de IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

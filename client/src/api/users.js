@@ -8,7 +8,7 @@ export const getUsersRequest = async () => {
 
 export const deleteUserRequest = async (id) => {
   const res = await axios.delete(`/user/${id}`);
-  console.log(res);
+  
   return res;
 };
 export const avatarUserRequest = async () => {
