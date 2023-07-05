@@ -1,15 +1,15 @@
 # Ignorar carpetas
 node_modules/
 client/node_modules/
+backend/node_modules/
 
 # Ignorar archivos
 .env
+backend/.env
 client/explanation.md
 
 # Ignorar archivos de compilación
 /dist
-client/dist/
-client/dist
 /build
 /out
 
