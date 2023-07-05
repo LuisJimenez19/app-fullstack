@@ -1,0 +1,117 @@
+.sidebar .menu {
+  margin-top: 40px;
+}
+
+.sidebar li a {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: var(--tran-03);
+  overflow: hidden;
+}
+
+.sidebar li a:hover {
+  background-color: var(--primary-color);
+}
+.sidebar li a:hover .icon,
+.sidebar li a:hover .text {
+  color: var(--sidebar-color);
+}
+html.dark .sidebar li a:hover .icon,
+html.dark .sidebar li a:hover .text {
+  color: var(--text-color);
+}
+
+.nav-link--active {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color) 90%,
+    var(--sidebar-color)
+  );
+  color: white;
+}
+.nav-link--active span {
+  color: white !important;
+}
+
+.sidebar .menu-bar {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: none;
+  flex-grow: 1;
+}
+
+.menu-bar::-webkit-scrollbar {
+  display: none;
+}
+.sidebar .menu-bar .mode {
+  border-radius: 6px;
+  background-color: var(--primary-color-light);
+  position: relative;
+  transition: var(--tran-03);
+}
+
+.menu-bar .mode .sun-moon {
+  height: 50px;
+  width: 60px;
+}
+
+.mode .sun-moon .icon {
+  position: absolute;
+}
+.mode .sun-moon .sun {
+  opacity: 0;
+}
+html.dark .mode .sun-moon .sun {
+  opacity: 1;
+}
+html.dark .mode .sun-moon .moon {
+  opacity: 0;
+}
+
+.menu-bar .bottom-content .toggle-switch {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-03);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+
+html.dark .switch::before {
+  left: 20px;
+}

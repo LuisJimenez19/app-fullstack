@@ -1,0 +1,79 @@
+:root {
+  /* ===== Colors ===== */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+
+  /* Shadow */
+  --shadow-body: #18191a;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease-in-out;
+
+  --tran-show-page: 0.2s;
+
+  /* fuentes */
+  --title: "Righteous", cursive;
+  --text: "Roboto Slab", serif;
+  --title2: "Russo One", sans-serif;
+
+  /* colors btn */
+  --purple: #646cff;
+  --purple-hover: #535bf2;
+
+  --blue: #3665db;
+  --error: #ff234f;
+  --green: #287834;
+}
+html.dark {
+  --body-color: #18191a;
+  --sidebar-color: #242526;
+  --primary-color: #3a3b3c;
+  --primary-color-light: #3a3b3c;
+  --toggle-color: #fff;
+  --text-color: #ccc;
+
+  --shadow-body: #e4e9f7;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--body-color);
+  color: var(--text-color);
+  transition: var(--tran-02);
+  font-family: var(--title);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+a {
+  text-decoration: none;
+}
+::selection {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  background: var(--primary-color-light);
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--primary-color-light),
+    var(--text-color)
+  );
+  border-radius: 5px;
+}
