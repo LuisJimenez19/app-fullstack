@@ -8,6 +8,8 @@ client/explanation.md
 
 # Ignorar archivos de compilación
 /dist
+client/dist/
+client/dist
 /build
 /out
 
