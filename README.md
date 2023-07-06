@@ -83,16 +83,16 @@ No pude utilizar el paquete `express-session` ya que parece no ser compatible co
 - sweetalert2 
 
 ## **Instalación y ejecución**
-1. Clona este repositorio
-2. Navega al directorio del backend: cd primer-apirest/backend
+1. [Clona este repositorio](https://github.com/LuisJimenez19/app-fullstack.git)
+2. Navega al directorio del backend: cd app-fullstack/backend
 3. Instala las dependencias del backend: npm install
 4. Crea un archivo .env en el directorio del backend y configura las variables de entorno necesarias.
-5. Inicia el servidor backend: npm start
-6. Navega al directorio del frontend: cd ../frontend
+5. Inicia el servidor backend: npm run dev
+6. Navega al directorio del frontend: cd ../client
 7. Instala las dependencias del frontend: npm install
-8. Configura el archivo .env del frontend con las variables de entorno necesarias.
+8. Configura el archivo config.js del frontend con las variables de entorno necesarias.
 9. Inicia el servidor de desarrollo del frontend: npm run dev
-10. Accede a la aplicación en tu navegador: http://localhost:3000
+10. Accede a la aplicación en tu navegador: http://localhost:5173 o el especificado
 
 ## DEMO
 Puedes encontrar un demostración de la app 👉🏽 [DEMO TASKIFY](http://localhost:5173/)
