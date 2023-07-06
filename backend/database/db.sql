@@ -49,3 +49,5 @@ VALUES
   ('robohash', 'a generated robot with different colors, faces, etc'),
   ('blank', 'a transparent PNG image (border added to HTML below for demonstration purposes)'),
   ('default-placeholder', 'sin imagen');
+
+/* Primero la entidad catalogo y sus datos */

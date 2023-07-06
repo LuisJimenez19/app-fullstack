@@ -1,7 +1,7 @@
 import express from "express";
 
 import cors from "cors";
-import dotenv from "dotenv";
+
 import cookieParser from "cookie-parser";
 
 import routesAuth from "./routes/auth.routes.js";
@@ -12,7 +12,6 @@ import routesSites from "./routes/sites.routes.js";
 import routesAvatar from "./routes/avatar.routes.js";
 
 const app = express();
-dotenv.config();
 /* Middleware */
 app.use(express.json());
 app.use(cookieParser());
@@ -24,6 +23,7 @@ app.use(
       "http://localhost:5173",
       "http://192.168.0.109:5173",
       "http://localhost:4173",
+      "https://taskifyap.netlify.app"
     ],
     credentials: true,
   })
