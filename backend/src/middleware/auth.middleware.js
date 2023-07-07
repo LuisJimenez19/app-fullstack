@@ -1,11 +1,12 @@
 import { loginController } from "../controllers/auth.controller.js";
 import { pool } from "../db.js";
 import { validateToken } from "../libs/jwt.js";
-
+/* El gran hp backend en fly.o no me quiere envar las cookies al front, no se por que sera */
 export const authSession = async (req, res, next) => {
+  console.log(req.cookies)
   try {
     const { token } = req.cookies;
-
+    console.log(token)
     if (!token)
       return res
         .status(401)

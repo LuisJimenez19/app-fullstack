@@ -4,7 +4,6 @@ import { EMAILREGEX } from "../utils/regex.js";
 
 import { createAccessToken, validateToken } from "../libs/jwt.js";
 
-
 export const pongController = async (req, res) => {
   const { user } = req;
 
@@ -49,8 +48,13 @@ export const registerController = async (req, res) => {
           /* Añado a la sesión antes era con express-session*/
 
           const token = await createAccessToken({ id: result.insertId });
-          res.cookie("token", token);
 
+          res.cookie("token", token, {
+            sameSite: "lax",
+            httpOnly: true,
+          });
+          console.log("token register", token);
+          console.log({ "res.cookie register": res.cookie });
           return res.status(200).json({
             message: "Successfully registered user.",
             currentUser: {
@@ -76,6 +80,7 @@ export const registerController = async (req, res) => {
 /* Login */
 export const loginController = async (req, res) => {
   const { token } = req.cookies;
+  console.log("token login req", token);
   const { email, password } = req.body;
   /* Los campos estan vacios */
   if (!email || !password) {
@@ -85,7 +90,6 @@ export const loginController = async (req, res) => {
   }
   /* Verifica si la credenciales coinciden. */
   try {
-   
     const [result] = await pool.query(
       "SELECT u.id, u.name, u.email, password,created_at, du.default_url " +
         "FROM users u " +
@@ -135,7 +139,12 @@ export const loginController = async (req, res) => {
           id,
           /*  email, */
         });
-        res.cookie("token", newToken);
+
+        res.cookie("token", newToken, {
+          sameSite: "lax",
+          httpOnly: true,
+        });
+        console.log("res login", newToken);
         return res.status(200).json({
           message: "successful start.",
           currentUser: {
