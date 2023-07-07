@@ -97,6 +97,7 @@ function Sidebar() {
                   if (res.status === 204) {
                     auth.setUser({});
                     auth.setIsAuthenticated(false);
+                    localStorage.removeItem("token");
                     toast.success("Vuelva pronto mi amor", {
                       icon: "♥",
                     });
@@ -115,7 +116,6 @@ function Sidebar() {
           </ul>
         </div>
       </nav>
-      
     </div>
   );
 }

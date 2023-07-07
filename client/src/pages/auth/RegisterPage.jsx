@@ -22,8 +22,8 @@ function RegisterPage() {
         const res = await registerRequest(user);
 
         if (res.status === 200 || res.status === 204) {
-          
           auth.setUser(res.data.currentUser);
+          localStorage.setItem("token", res.data.currentUser.token);
           toast.success(res.data.message, {
             duration: 1000,
           });

@@ -6,13 +6,13 @@ import { createAccessToken, validateToken } from "../libs/jwt.js";
 
 export const pongController = async (req, res) => {
   const { user } = req;
-
   res.json({ user });
 };
 
 /* Register */
 export const registerController = async (req, res) => {
-  const { token } = req.cookies;
+  // const { token } = req.cookies;
+  const token = req.headers.authorization;
 
   if (token) {
     res.status(300).json({
@@ -48,19 +48,17 @@ export const registerController = async (req, res) => {
           /* Añado a la sesión antes era con express-session*/
 
           const token = await createAccessToken({ id: result.insertId });
-
-          res.cookie("token", token, {
+          /*  res.cookie("token", token, {
             sameSite: "lax",
             httpOnly: true,
-          });
-          console.log("token register", token);
-          console.log({ "res.cookie register": res.cookie });
+          }); */
           return res.status(200).json({
             message: "Successfully registered user.",
             currentUser: {
               id: result.insertId,
               name,
               email,
+              token,
               default_url: "monsterid", // Tendría que mandar el usuario que devielve de la base de datos, con sus datos
               // pero esto solo es en el primer registro
             },
@@ -79,8 +77,8 @@ export const registerController = async (req, res) => {
 
 /* Login */
 export const loginController = async (req, res) => {
-  const { token } = req.cookies;
-  console.log("token login req", token);
+  const token = req.headers.authorization;
+  // console.log("token login req", token);
   const { email, password } = req.body;
   /* Los campos estan vacios */
   if (!email || !password) {
@@ -135,16 +133,13 @@ export const loginController = async (req, res) => {
           secure: true,
           expires: new Date(0),
         });
-        const newToken = await createAccessToken({
-          id,
-          /*  email, */
-        });
 
-        res.cookie("token", newToken, {
+        /*     res.cookie("token", newToken, {
           sameSite: "lax",
           httpOnly: true,
-        });
-        console.log("res login", newToken);
+        }); */
+        
+        const newToken = await createAccessToken({ id });
         return res.status(200).json({
           message: "successful start.",
           currentUser: {
@@ -152,6 +147,7 @@ export const loginController = async (req, res) => {
             name,
             email,
             default_url,
+            token: newToken,
           },
         });
       }
@@ -175,5 +171,6 @@ export const logoutController = async (req, res) => {
     secure: true,
     expires: new Date(0),
   });
+
   return res.sendStatus(204);
 };

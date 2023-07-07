@@ -9,6 +9,7 @@ routesAvatar.get("/gravatar", authSession, async (req, res) => {
     const [result] = await pool.query("SELECT * FROM default_url_gravatar");
 
     res.status(200).json(result);
+    
   } catch (error) {
     console.log(error);
     res.status(500).json({

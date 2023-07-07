@@ -10,9 +10,11 @@ function AuthContext({ children }) {
   const [errorServer, setErrorServer] = useState(false);
   useEffect(() => {
     setIsLoading(true);
+
     verifySessionRequest()
       .then((res) => {
         if (res.status === 200) {
+          console.log(res.headers);
           setUser(res.data.user);
           setIsLoading(false);
           setIsAuthenticated(true);
@@ -24,7 +26,7 @@ function AuthContext({ children }) {
         setIsAuthenticated(false);
         setIsLoading(false);
         console.log(e.response.data.message, e.response.status);
-         setErrorServer(e); // si no hay conexión al servidor
+        setErrorServer(e); // si no hay conexión al servidor
         e.response.status === 401 && setErrorServer(false); // si no esta autorizado, va al login
       });
   }, []);
@@ -39,10 +41,7 @@ function AuthContext({ children }) {
 
   if (errorServer)
     return (
-      <div
-        className="page-not-found"
-        // style={{ fontSize: "3em", textAlign: "center" }}
-      >
+      <div className="page-not-found">
         {" "}
         <div className="content">
           {" "}

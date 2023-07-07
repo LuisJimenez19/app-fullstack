@@ -18,6 +18,5 @@ export const logoutRequest = async (user) => {
 
 export const verifySessionRequest = async () => {
   const res = await axios.get("/verify-session");
-
   return res;
 };

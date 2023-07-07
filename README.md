@@ -106,4 +106,16 @@ Puedes encontrar un demostración de la app 👉🏽 [DEMO TASKIFY](http://local
 ## Contribuciones
 Las contribuciones son bienvenidas. Si tienes alguna sugerencia, mejora o corrección, no dudes en abrir un problema o enviar una solicitud de extracción.
 
+- 07/07/2023
+Al desplegar el backend, la base de datos y el front, me di cuenta que no se enviaban las cookies desde el back al 
+probe tratando de configurar el back y las cookies pero no pude
+buscando información me dí que podia hacerlo por los headers lo cual me parece una mejor forma.
+Cambio en el back:
+`const {token} = req.cookies`
+por:
+`const token = req.headers.authorization`
+y la validación es la misma.
+En el frond guardo el token en el localStorage (no sé si sea una buena práctica) y configuro axios
+para que lo envie en los headers.
 
+Ahora debo ver como manejar cuando se expiran o se da logout. 

@@ -16,14 +16,17 @@ function LoginPage() {
     e.preventDefault();
     const errors = validateForm(user);
     setFormErros(errors);
+
     if (Object.keys(errors).length === 0) {
       try {
         const res = await loginRequest(user);
 
         if (res.status === 200 || res.status === 204) {
+          localStorage.setItem("token", res.data.currentUser.token);
           toast.success(res.data.message, {
             duration: 1000,
           });
+          console.log(res.data);
           auth.setUser(res.data.currentUser);
         } else {
           toast.error(res.data.message);

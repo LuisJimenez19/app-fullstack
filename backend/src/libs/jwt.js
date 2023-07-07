@@ -34,6 +34,7 @@ export async function validateToken(token) {
     throw error;
   }
 }
+
 /* El jwt recibe el valor, la palabra secreta, opciones, y un callback para manejar la respuesta
 creo esta función para que quede mas limpio el código cuando lo creo. */
 
