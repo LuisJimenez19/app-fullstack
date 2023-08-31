@@ -86,7 +86,7 @@ No pude utilizar el paquete `express-session` ya que parece no ser compatible co
 1. [Clona este repositorio](https://github.com/LuisJimenez19/app-fullstack.git)
 2. Navega al directorio del backend: cd app-fullstack/backend
 3. Instala las dependencias del backend: npm install
-4. Crea un archivo .env en el directorio del backend y configura las variables de entorno necesarias.
+4. Crea un archivo .env en el directorio del backend y configura las variables de entorno necesarias o modifica el archivo .env.example
 5. Inicia el servidor backend: npm run dev
 6. Navega al directorio del frontend: cd ../client
 7. Instala las dependencias del frontend: npm install
@@ -95,7 +95,7 @@ No pude utilizar el paquete `express-session` ya que parece no ser compatible co
 10. Accede a la aplicación en tu navegador: http://localhost:5173 o el especificado
 
 ## DEMO
-Puedes encontrar un demostración de la app 👉🏽 [DEMO TASKIFY](http://localhost:5173/)
+Puedes encontrar un demostración de la app 👉🏽 [DEMO TASKIFY](https://taskifyap.netlify.app/)
 
 <small>Por favor ten en cuenta que la demostración en línea de la aplicación no incluye la funcionalidad de los sitios favoritos. Además, la aplicación puede estar en suspensión en ciertos momentos debido a tareas de mantenimiento o actualizaciones del servidor.</small>
 
