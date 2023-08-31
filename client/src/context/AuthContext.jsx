@@ -10,7 +10,6 @@ function AuthContext({ children }) {
   const [errorServer, setErrorServer] = useState(false);
   useEffect(() => {
     setIsLoading(true);
-
     verifySessionRequest()
       .then((res) => {
         if (res.status === 200) {

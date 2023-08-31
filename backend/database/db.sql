@@ -20,7 +20,7 @@ CREATE TABLE tasks (
     created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     completed_at DATETIME NULL,
     user_id INT,
-    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE RESTRICT ON UPDATE CASCADE
+        
 ) CHARSET=utf8mb4;
 
 CREATE TABLE sites (
