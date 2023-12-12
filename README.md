@@ -1,4 +1,4 @@
-# **Primer APIREST**
+# **Taskify**
 
 Aplicación que permite al usuario leer, crear, actualizar y borrar tareas y sitios favoritos, con un sistema de autenticación.
 
