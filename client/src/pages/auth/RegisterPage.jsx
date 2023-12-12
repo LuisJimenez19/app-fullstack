@@ -5,11 +5,13 @@ import { registerRequest } from "../../api/auth";
 
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { BiLoaderCircle } from "react-icons/bi";
 
 function RegisterPage() {
   const auth = useAuth();
 
   const [user, setUser] = useState({});
+  const [loadingFetch, setLoadingFetch] = useState(false);
   const [formErros, setFormErros] = useState({});
 
   async function handleSubmit(e) {
@@ -19,6 +21,7 @@ function RegisterPage() {
 
     if (Object.keys(errors).length === 0) {
       try {
+        setLoadingFetch(true);
         const res = await registerRequest(user);
 
         if (res.status === 200 || res.status === 204) {
@@ -32,6 +35,8 @@ function RegisterPage() {
         }
       } catch (err) {
         toast.error(err.response.data.message);
+      } finally {
+        setLoadingFetch(false);
       }
     }
   }
@@ -103,9 +108,9 @@ function RegisterPage() {
             aria-label="Enviar datos"
             aria-labelledby="Enviar datos"
             type="submit"
-            className="btn-submit"
+            className={`btn-submit ${loadingFetch && "loading"}`}
           >
-            Register
+            {loadingFetch ? <BiLoaderCircle /> : "Register"}
           </button>
         </form>
       </>

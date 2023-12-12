@@ -23,13 +23,18 @@
   background-size: contain;
   animation: fade-in 0.3s backwards;
 }
+
+.container-loading.auth {
+  height: 100vh;
+  background-size: 20%;
+}
+
 .container-loading .loading {
   /* font-size: 3em; */
   font-family: var(--text);
 }
 
 .page-not-found {
- 
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -38,7 +43,7 @@
   justify-content: center;
   align-items: center;
   font-size: calc(1em + 1vmin);
-  animation: fade-in .3s backwards;
+  animation: fade-in 0.3s backwards;
 }
 .page-not-found .img {
   background-image: url(./media/img/404.png);

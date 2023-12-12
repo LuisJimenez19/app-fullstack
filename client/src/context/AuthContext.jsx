@@ -61,7 +61,7 @@ function AuthContext({ children }) {
       }}
     >
       {isLoading ? (
-        <div className="container-loading">
+        <div className="container-loading auth">
           <div className="loading">Cargando..</div>
         </div>
       ) : (

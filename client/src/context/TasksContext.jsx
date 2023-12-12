@@ -31,14 +31,12 @@ function TasksContextProvider({ children }) {
       value={{ tasks, setTasks, isLoading, setIsLoading, handleRequestTasks }}
     >
       {isLoading ? (
-        <div className="container-loading">
-          <div className="loading">Cargando..</div>
+        <div className="container-loading auth">
+          <div className="loading">Cargando... </div>
         </div>
       ) : (
         children
       )}
-
-     
     </TasksContext.Provider>
   );
 }

@@ -9,7 +9,7 @@ input {
   flex-direction: column;
   justify-content: space-between;
 
-  animation: fade-in .5s backwards;
+  animation: fade-in 0.5s backwards;
 }
 
 .form-page {
@@ -78,4 +78,10 @@ input {
   font-family: var(--title2);
   font-size: 1.2em;
   background-color: var(--purple);
+  cursor: pointer;
+}
+
+.btn-submit.loading {
+  opacity: 0.7;
+  cursor: wait;
 }

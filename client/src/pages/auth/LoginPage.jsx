@@ -4,11 +4,13 @@ import { LayoutAuth } from "./LayoutAuth";
 
 import { useAuth } from "../../hooks/useAuth";
 import { toast } from "react-hot-toast";
+import { BiLoaderCircle } from "react-icons/bi";
 
 function LoginPage() {
   const auth = useAuth();
 
   const [user, setUser] = useState({});
+  const [loadingFetch, setLoadingFetch] = useState(false);
 
   const [formErros, setFormErros] = useState({});
 
@@ -19,6 +21,7 @@ function LoginPage() {
 
     if (Object.keys(errors).length === 0) {
       try {
+        setLoadingFetch(true);
         const res = await loginRequest(user);
 
         if (res.status === 200 || res.status === 204) {
@@ -33,8 +36,11 @@ function LoginPage() {
         }
       } catch (err) {
         err.response.data.message && toast.error(err.response.data.message);
-        toast.error(err.message);
+        // toast.error(err.message);
+
         console.log(err);
+      } finally {
+        setLoadingFetch(false);
       }
     }
   }
@@ -90,10 +96,11 @@ function LoginPage() {
           <button
             aria-label="Enviar datos"
             aria-labelledby="Enviar datos."
-            className="btn-submit"
+            className={`btn-submit ${loadingFetch && "loading"}`}
             type="submit"
+            disabled={loadingFetch}
           >
-            Login
+            {loadingFetch ? <BiLoaderCircle /> : "Login"}
           </button>
         </form>
       </LayoutAuth>
