@@ -12,7 +12,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 /* Toast */
 import { Toaster } from "react-hot-toast";
 import { ModalCard } from "./components/ModalCard";
-import { TasksContextProvider } from "./context/TasksContext";
+// import { TasksContextProvider } from "./context/TasksContext";
 import { TasksPage } from "./pages/TaskPage";
 import { DashboardPage } from "./pages/DashboardPage";
 import { ProfilePage } from "./pages/ProfilePage";
@@ -67,13 +67,10 @@ function App() {
   return (
     <main className="app">
       <AuthContext>
-        <TasksContextProvider>
-          <RouterProvider router={router} />
-        </TasksContextProvider>
+        <RouterProvider router={router} />
       </AuthContext>
 
       <Toaster />
-      
     </main>
   );
 }

@@ -29,7 +29,7 @@ function LoginPage() {
           toast.success(res.data.message, {
             duration: 1000,
           });
-          console.log(res.data);
+          // console.log(res.data);
           auth.setUser(res.data.currentUser);
         } else {
           toast.error(res.data.message);
@@ -38,7 +38,7 @@ function LoginPage() {
         err.response.data.message && toast.error(err.response.data.message);
         // toast.error(err.message);
 
-        console.log(err);
+        // console.log(err);
       } finally {
         setLoadingFetch(false);
       }

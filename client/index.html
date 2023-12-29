@@ -26,6 +26,15 @@
   <body>
     <div id="root"></div>
 
+    <script>
+      const darkMode = localStorage.getItem("isDark") || "dark";
+
+      if (darkMode === "dark") {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
